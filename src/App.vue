@@ -1,32 +1,41 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
+<script>
+import axios from "axios";
+export default {
+  name: "App",
+  data() {
+    return {
+      APIKey: "d6679beaa23bbcc909a3ed8692b18a4f",
+      city: "Douala",
+    };
+  },
+  created() {
+    this.getCurrentWeather();
+  },
+  methods: {
+    getCurrentWeather() {
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${this.APIKey}`
+        )
+        .then((res) => {
+          console.log(res.data);
+        });
+    },
+  },
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 </style>
