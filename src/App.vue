@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <div class="main">
+    <Navigation class="navigation" />
     <router-view />
   </div>
 </template>
@@ -7,8 +8,12 @@
 <script>
 import axios from "axios";
 import db from "./firebase/firebaseinit";
+import Navigation from "./components/Navigation.vue";
 export default {
   name: "App",
+  components: {
+    Navigation,
+  },
   data() {
     return {
       APIKey: "d6679beaa23bbcc909a3ed8692b18a4f",
@@ -71,5 +76,21 @@ export default {
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+}
+
+.main {
+  height: 100vh;
+  .navigation {
+    z-index: 99;
+    position: fixed;
+    max-width: 1024px;
+    width: 100%;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .container {
+    padding: 0 20px;
+  }
 }
 </style>
