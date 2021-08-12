@@ -73,7 +73,7 @@ export default {
 
   .video {
     overflow: hidden;
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -83,7 +83,7 @@ export default {
       height: 150%;
       width: 100%;
       @media (min-width: 900px) {
-        height: auto;
+        height: 100vh;
         width: 100%;
       }
     }
